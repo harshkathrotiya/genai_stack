@@ -1,0 +1,63 @@
+/* App-specific styles */
+.app-container {
+  @apply min-h-screen bg-gray-50;
+}
+
+/* Logo animations */
+.logo {
+  @apply h-8 w-8 transition-all duration-300;
+}
+
+.logo:hover {
+  @apply scale-110;
+  filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 4px 8px rgba(97, 218, 251, 0.3));
+}
+
+/* Card components */
+.feature-card {
+  @apply card-hover p-6;
+}
+
+/* Enhanced animations */
+@keyframes logo-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+.logo-animated {
+  animation: logo-float 6s ease-in-out infinite;
+}
+
+/* Loading states */
+.loading-card {
+  @apply card p-6;
+}
+
+.loading-card .loading-skeleton {
+  @apply h-4 w-3/4 mb-3;
+}
+
+/* Empty states */
+.empty-state {
+  @apply text-center py-12;
+}
+
+.empty-state-icon {
+  @apply w-16 h-16 mx-auto mb-4 text-gray-400;
+}
+
+.empty-state-title {
+  @apply text-lg font-medium text-gray-900 mb-2;
+}
+
+.empty-state-description {
+  @apply text-sm text-gray-500 max-w-sm mx-auto;
+}

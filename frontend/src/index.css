@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force CSS compilation check */
+.css-test {
+  color: red;
+  font-size: 16px;
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    tab-size: 4;
+  }
+
+  body {
+    margin: 0;
+    line-height: inherit;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: normal;
+    background-color: #f8fafc;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Component Layer */
+@layer components {
+  /* Icon sizing fixes */
+  .icon-small {
+    font-size: 1rem;
+    line-height: 1;
+  }
+  
+  .icon-medium {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  
+  /* Fallback styles for when Tailwind is not loading properly */
+  .fallback-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8fafc;
+  }
+  
+  .fallback-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .fallback-button:hover {
+    background-color: #2563eb;
+  }
+  /* Workspace Components */
+  .workspace-sidebar {
+    @apply bg-white border-r border-gray-200 shadow-sm;
+  }
+
+  .workspace-header {
+    @apply bg-white border-b border-gray-200 shadow-sm backdrop-blur-sm bg-white/95;
+  }
+
+  .workspace-canvas {
+    @apply relative bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/20;
+  }
+
+  /* Button Styles */
+  .btn-base {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-sm hover:shadow-md active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply btn-base bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-primary-500 shadow-sm hover:shadow-md active:scale-95;
+  }
+
+  .btn-success {
+    @apply btn-base bg-green-600 text-white hover:bg-green-700 focus:ring-green-500 shadow-sm hover:shadow-md active:scale-95;
+  }
+
+  .btn-disabled {
+    @apply btn-base bg-gray-200 text-gray-400 cursor-not-allowed;
+  }
+
+  /* Status Indicators */
+  .status-valid {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200;
+  }
+
+  .status-invalid {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 border border-red-200;
+  }
+
+  /* Component Library */
+  .library-component {
+    @apply relative p-4 rounded-xl border-2 border-dashed transition-all duration-200 cursor-grab active:cursor-grabbing hover:shadow-md hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .library-component:hover {
+    @apply shadow-lg border-solid;
+  }
+
+  /* Node Components */
+  .component-node {
+    @apply rounded-xl border-2 shadow-lg transition-all duration-200 hover:shadow-xl;
+  }
+
+  .component-node.selected {
+    @apply ring-2 ring-primary-500 ring-offset-2 shadow-xl;
+  }
+
+  .component-handle {
+    @apply !w-3 !h-3 !border-2 !border-white !shadow-md transition-all duration-200;
+  }
+
+  .component-handle:hover {
+    @apply !scale-125;
+  }
+
+  /* Form Elements */
+  .form-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg text-sm placeholder-gray-400 transition-colors duration-200 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500;
+  }
+
+  .form-textarea {
+    @apply form-input resize-none;
+  }
+
+  .form-select {
+    @apply form-input pr-10 bg-white;
+  }
+
+  .form-checkbox {
+    @apply h-4 w-4 text-primary-600 border-gray-300 rounded transition-colors duration-200 focus:ring-primary-500;
+  }
+
+  /* Cards and Panels */
+  .card {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-md hover:border-gray-300;
+  }
+
+  .panel {
+    @apply bg-white border border-gray-200 rounded-xl shadow-sm;
+  }
+
+  /* Typography */
+  .text-heading {
+    @apply text-gray-900 font-semibold tracking-tight;
+  }
+
+  .text-subheading {
+    @apply text-gray-700 font-medium;
+  }
+
+  .text-body {
+    @apply text-gray-600 leading-relaxed;
+  }
+
+  .text-caption {
+    @apply text-gray-500 text-sm;
+  }
+
+  /* Layout Helpers */
+  .container-fluid {
+    @apply w-full max-w-none;
+  }
+
+  .container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-8 md:py-12;
+  }
+
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-in {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 0.6s ease-in-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* Utility Layer */
+@layer utilities {
+  /* Custom shadows */
+  .shadow-component {
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-node {
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-float {
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12), 0 6px 12px -4px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .bg-gradient-warm {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+
+  .bg-gradient-cool {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+
+  /* Text gradients */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Custom borders */
+  .border-gradient {
+    border: 1px solid;
+    border-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%) 1;
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+
+  /* Custom spacing */
+  .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.125rem;
+  }
+
+  /* Focus utilities */
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+}
+
+/* Custom Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ReactFlow Customizations */
+.react-flow__node {
+  @apply transition-all duration-200;
+}
+
+.react-flow__node:hover {
+  @apply scale-105;
+}
+
+.react-flow__edge {
+  @apply transition-all duration-200;
+}
+
+.react-flow__edge.selected {
+  @apply drop-shadow-lg;
+}
+
+.react-flow__controls {
+  @apply shadow-component border border-gray-200 bg-white/95 backdrop-blur-sm;
+}
+
+.react-flow__controls button {
+  @apply transition-all duration-200 hover:bg-gray-50 border-gray-200;
+}
+
+.react-flow__minimap {
+  @apply shadow-component border border-gray-200 bg-white/95 backdrop-blur-sm;
+}
+
+/* Scrollbar Styling */
+.workspace-sidebar::-webkit-scrollbar,
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.workspace-sidebar::-webkit-scrollbar-track,
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.workspace-sidebar::-webkit-scrollbar-thumb,
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.workspace-sidebar::-webkit-scrollbar-thumb:hover,
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Loading States */
+.loading-skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+.loading-spinner {
+  @apply animate-spin rounded-full border-2 border-gray-300 border-t-primary-600;
+}
+
+/* Responsive Design Helpers */
+@media (max-width: 768px) {
+  .workspace-sidebar {
+    @apply w-full max-w-none;
+  }
+  
+  .btn-base {
+    @apply text-xs px-3 py-1.5;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .workspace-header,
+  .workspace-sidebar,
+  .react-flow__controls,
+  .react-flow__minimap {
+    @apply hidden;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .component-node {
+    @apply border-black;
+  }
+  
+  .btn-primary {
+    @apply bg-black text-white;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
