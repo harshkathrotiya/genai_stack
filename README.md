@@ -3,7 +3,7 @@
 ## 🎯 Assignment Overview
 **Position**: Full Stack Engineer Internship 2025  
 **Company**: AI Planet  
-**Submission Date**: January 2025
+**Submission Date**: 5 September 2025
 
 ## 🚀 Live Application
 - **Frontend**: http://localhost:5173
@@ -214,4 +214,4 @@ User Query → LLM Engine (with web search) → Output
 
 ---
 
-**Built with ❤️ for AI Planet Full Stack Engineer Internship** 🚀
+**Built with ❤️ for AI Planet Full Stack Engineer Internship BY Harsh** 🚀
